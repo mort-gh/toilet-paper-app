@@ -48,10 +48,10 @@ export const Sliders = props => {
 
   const firstValues = {
     quantityRolls: [
-      'Количество рулонов у тебя',
+      'Сколько рулонов успел купить',
       1,
       100,
-      1,
+      props.defaultValues.quantityRolls,
       props.quantityRolls,
       props.setQuantityRolls
     ],
@@ -59,7 +59,7 @@ export const Sliders = props => {
       'Посещений туалета в день',
       1,
       20,
-      2,
+      props.defaultValues.quantityToilets,
       props.quantityToilets,
       props.setQuantityToilets
     ]
@@ -67,10 +67,10 @@ export const Sliders = props => {
 
   const secondValues = {
     averageWipes: [
-      'Среднее количество бумажек за одно посещение',
+      'Сколько бумажек отрываешь за одно посещение',
       1,
       15,
-      2,
+      props.defaultValues.averageWipes,
       props.averageWipes,
       props.setAverageWipes
     ],
@@ -78,7 +78,7 @@ export const Sliders = props => {
       'Бумажка состоит из количества салфеток',
       1,
       10,
-      2,
+      props.defaultValues.sheetsWipe,
       props.sheetsWipe,
       props.setSheetsWipe
     ],
@@ -86,7 +86,7 @@ export const Sliders = props => {
       'Салфеток в одном рулоне',
       120,
       500,
-      140,
+      props.defaultValues.sheetsRoll,
       props.sheetsRoll,
       props.setSheetsRoll
     ],
@@ -94,7 +94,7 @@ export const Sliders = props => {
       'Людей в семье',
       1,
       10,
-      1,
+      props.defaultValues.peopleHome,
       props.peopleHome,
       props.setPeopleHome
     ],
@@ -102,7 +102,7 @@ export const Sliders = props => {
       'Дней карантина',
       1,
       90,
-      20,
+      props.defaultValues.daysQuarantine,
       props.daysQuarantine,
       props.setDaysQuarantine
     ]

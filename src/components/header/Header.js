@@ -5,7 +5,8 @@ import Container from '@material-ui/core/Container';
 const styles = {
   headerBlock: {
     textAlign: 'center',
-    backgroundColor: 'rgb(220, 0, 78)'
+    backgroundColor: 'rgb(220, 0, 78)',
+    padding: '60px 20px'
   },
   title: {
     color: 'white'
@@ -28,9 +29,32 @@ const HrLine = ({ color }) => (
 
 const title = ' Сколько нужно туалетной бумаги?';
 const description =
-  'Простой калькулятор, чтобы посчитать, сколько туалетной бумаги вам нужно, чтобы пережить пандемию';
+  'Простой калькулятор, чтобы расчитать, сколько туалетной бумаги вам нужно, чтобы пережить пандемию';
 
-export const Header = ({ result }) => {
+export const Header = ({ result, percent }) => {
+  function getNumEnding(iNumber, aEndings) {
+    var sEnding, i;
+    iNumber = iNumber % 100;
+    if (iNumber >= 11 && iNumber <= 19) {
+      sEnding = aEndings[2];
+    } else {
+      i = iNumber % 10;
+      switch (i) {
+        case 1:
+          sEnding = aEndings[0];
+          break;
+        case 2:
+        case 3:
+        case 4:
+          sEnding = aEndings[1];
+          break;
+        default:
+          sEnding = aEndings[2];
+      }
+    }
+    return sEnding;
+  }
+
   return (
     <div style={styles.headerBlock}>
       <Container maxWidth='lg'>
@@ -49,11 +73,12 @@ export const Header = ({ result }) => {
         <HrLine color='grey' />
 
         <Typography style={styles.title} variant='h4' gutterBottom>
-          Вы продержитесь {result} дня
+          Вы продержитесь {result}{' '}
+          {getNumEnding(result, ['день', 'дня', 'дней'])}
         </Typography>
 
         <Typography style={styles.title} variant='h6' gutterBottom>
-          или 80% вашего карантина
+          или {percent}% вашего карантина
         </Typography>
       </Container>
     </div>

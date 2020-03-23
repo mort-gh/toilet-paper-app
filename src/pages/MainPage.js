@@ -47,8 +47,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const defaultSlidersValue = {
+  quantityRolls: 1,
+  quantityToilets: 2,
+  averageWipes: 2,
+  sheetsWipe: 2,
+  sheetsRoll: 140,
+  peopleHome: 1,
+  daysQuarantine: 20
+};
+
 export const MainPage = ({ container }) => {
   const [result, setResult] = useState(0);
+  const [percent, setPercent] = useState(0);
   const [quantityRolls, setQuantityRolls] = useState(0);
   const [quantityToilets, setQuantityToilets] = useState(0);
   const [averageWipes, setAverageWipes] = useState(0);
@@ -57,9 +68,26 @@ export const MainPage = ({ container }) => {
   const [peopleHome, setPeopleHome] = useState(0);
   const [daysQuarantine, setDaysQuarantine] = useState(0);
 
-  // useEffect(() => {
-  //   getResult();
-  // }, [result]);
+  useEffect(() => {
+    getTotalResult(
+      quantityRolls,
+      quantityToilets,
+      averageWipes,
+      sheetsWipe,
+      sheetsRoll,
+      peopleHome
+    );
+    getTotalPercent(result, daysQuarantine);
+  }, [
+    quantityRolls,
+    quantityToilets,
+    averageWipes,
+    sheetsWipe,
+    sheetsRoll,
+    peopleHome,
+    daysQuarantine,
+    result
+  ]);
 
   const initialState = {
     quantityRolls,
@@ -82,22 +110,15 @@ export const MainPage = ({ container }) => {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const getResult = () => {
-    const sum =
-      quantityRolls +
-      quantityToilets +
-      averageWipes +
-      sheetsWipe +
-      sheetsRoll +
-      peopleHome +
-      daysQuarantine;
-
-    setResult(sum);
-  };
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const getTotalResult = (a, b, c, d, e, f) =>
+    setResult(Math.round((a * e) / (d * c * b * f)));
+
+  const getTotalPercent = (result, g) =>
+    setPercent(Math.round((result / g) * 100));
 
   const appBar = (
     <AppBar position='fixed' color='secondary' className={classes.appBar}>
@@ -122,7 +143,7 @@ export const MainPage = ({ container }) => {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <Sliders {...initialState} result={result} getResult={getResult} />
+      <Sliders {...initialState} defaultValues={defaultSlidersValue} />
     </div>
   );
 
@@ -162,7 +183,7 @@ export const MainPage = ({ container }) => {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Header result={result} />
+        <Header result={result} percent={percent} />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
