@@ -1,31 +1,9 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
+import { styles } from './Header.module';
 
-const styles = {
-  headerBlock: {
-    textAlign: 'center',
-    backgroundColor: 'rgb(220, 0, 78)',
-    padding: '60px 20px'
-  },
-  title: {
-    color: 'white'
-  },
-  description: {
-    color: 'white',
-    marginTop: 30
-  }
-};
-
-const HrLine = ({ color }) => (
-  <hr
-    style={{
-      color: color,
-      backgroundColor: color,
-      width: '80%'
-    }}
-  />
-);
+import { Twitter, Facebook, Telegram, Whatsapp } from 'react-social-sharing';
 
 const title = ' Сколько нужно туалетной бумаги?';
 const description =
@@ -55,6 +33,8 @@ export const Header = ({ result, percent }) => {
     return sEnding;
   }
 
+  const BASE_URL = 'https://mort-gh.github.io/toilet-paper-app/';
+
   return (
     <div style={styles.headerBlock}>
       <Container maxWidth='lg'>
@@ -70,16 +50,24 @@ export const Header = ({ result, percent }) => {
           {description}
         </Typography>
 
-        <HrLine color='grey' />
+        <hr style={styles.hr} />
 
         <Typography style={styles.title} variant='h4' gutterBottom>
-          Вы продержитесь {result}{' '}
+          Вы продержитесь
+          <Typography style={styles.result} variant='span'>
+            {result}
+          </Typography>
           {getNumEnding(result, ['день', 'дня', 'дней'])}
         </Typography>
 
         <Typography style={styles.title} variant='h6' gutterBottom>
           или {percent}% вашего карантина
         </Typography>
+
+        <Facebook link={BASE_URL} />
+        <Twitter link={BASE_URL} />
+        <Telegram link={BASE_URL} />
+        <Whatsapp link={BASE_URL} />
       </Container>
     </div>
   );
