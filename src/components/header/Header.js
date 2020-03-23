@@ -63,12 +63,12 @@ export const Header = ({ result, percent }) => {
         <Typography style={styles.title} variant='h6' gutterBottom>
           или {percent}% вашего карантина
         </Typography>
-
-        <Facebook link={BASE_URL} />
-        <Twitter link={BASE_URL} />
-        <Telegram link={BASE_URL} />
-        <Whatsapp link={BASE_URL} />
       </Container>
+
+      <Facebook link={BASE_URL} />
+      <Twitter link={BASE_URL} />
+      <Telegram link={BASE_URL} />
+      <Whatsapp link={BASE_URL} />
     </div>
   );
 };
