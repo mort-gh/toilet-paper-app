@@ -114,11 +114,44 @@ export const MainPage = ({ container }) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const getTotalResult = (a, b, c, d, e, f) =>
-    setResult(Math.round((a * e) / (d * c * b * f)));
+  const getTotalResult = async (a, b, c, d, e, f) => {
+    await setResult(Math.round((a * e) / (d * c * b * f)));
+    await changeDocumentTitle(result);
+  };
 
   const getTotalPercent = (result, g) =>
     setPercent(Math.round((result / g) * 100));
+
+  function changeDocumentTitle(result) {
+    let title = `Моей туалетной бумаги хватит ${result} на ${getNumEnding(
+      result,
+      ['день', 'дня', 'дней']
+    )} карантина`;
+    document.title = title;
+  }
+
+  function getNumEnding(iNumber, aEndings) {
+    var sEnding, i;
+    iNumber = iNumber % 100;
+    if (iNumber >= 11 && iNumber <= 19) {
+      sEnding = aEndings[2];
+    } else {
+      i = iNumber % 10;
+      switch (i) {
+        case 1:
+          sEnding = aEndings[0];
+          break;
+        case 2:
+        case 3:
+        case 4:
+          sEnding = aEndings[1];
+          break;
+        default:
+          sEnding = aEndings[2];
+      }
+    }
+    return sEnding;
+  }
 
   const appBar = (
     <AppBar position='fixed' color='secondary' className={classes.appBar}>

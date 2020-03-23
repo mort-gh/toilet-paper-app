@@ -1,10 +1,12 @@
 import React from 'react';
-import { MainPage } from '../pages/MainPage';
+import { store } from '../redux/store';
+import { Provider } from 'react-redux';
+import { Sliders } from './sliders/Sliders';
 
 export const App = () => {
   return (
-    <>
-      <MainPage />
-    </>
+    <Provider store={store}>
+      <Sliders />
+    </Provider>
   );
 };

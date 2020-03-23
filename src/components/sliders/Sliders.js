@@ -1,67 +1,105 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useStyles, PrettoSlider } from './Slider.module';
+import { Header } from '../header/Header';
+import shortId from 'shortid';
 
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { defaultValues } from './defaultValues';
+
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Slider from '@material-ui/core/Slider';
 import Divider from '@material-ui/core/Divider';
 
-const useStyles = makeStyles({
-  root: {
-    padding: 30,
-    width: '100%'
-  }
-});
+export const Sliders = () => {
+  const [result, setResult] = useState(0);
+  const [percent, setPercent] = useState(0);
+  const [quantityRolls, setQuantityRolls] = useState(0);
+  const [quantityToilets, setQuantityToilets] = useState(0);
+  const [averageWipes, setAverageWipes] = useState(0);
+  const [sheetsWipe, setSheetsWipe] = useState(0);
+  const [sheetsRoll, setSheetsRoll] = useState(0);
+  const [peopleHome, setPeopleHome] = useState(0);
+  const [daysQuarantine, setDaysQuarantine] = useState(0);
 
-const PrettoSlider = withStyles({
-  root: {
-    color: 'rgb(220, 0, 78)',
-    height: 8
-  },
-  thumb: {
-    height: 24,
-    width: 24,
-    backgroundColor: '#fff',
-    border: '2px solid currentColor',
-    marginTop: -8,
-    marginLeft: -12,
-    '&:focus, &:hover, &$active': {
-      boxShadow: 'inherit'
-    }
-  },
-  active: {},
-  valueLabel: {
-    left: 'calc(-50% + 4px)'
-  },
-  track: {
-    height: 8,
-    borderRadius: 4
-  },
-  rail: {
-    height: 8,
-    borderRadius: 4
-  }
-})(Slider);
-
-export const Sliders = props => {
   const classes = useStyles();
+
+  useEffect(() => {
+    getTotalResult(
+      quantityRolls,
+      quantityToilets,
+      averageWipes,
+      sheetsWipe,
+      sheetsRoll,
+      peopleHome
+    );
+    getTotalPercent(result, daysQuarantine);
+  }, [
+    quantityRolls,
+    quantityToilets,
+    averageWipes,
+    sheetsWipe,
+    sheetsRoll,
+    peopleHome,
+    daysQuarantine,
+    result,
+    getTotalResult
+  ]);
+
+  async function getTotalResult(a, b, c, d, e, f) {
+    await setResult(Math.round((a * e) / (d * c * b * f)));
+    await changeDocumentTitle(result);
+  }
+
+  const getTotalPercent = (result, g) =>
+    setPercent(Math.round((result / g) * 100));
+
+  function changeDocumentTitle(result) {
+    let title = `Моей туалетной бумаги хватит ${result} на ${getNumEnding(
+      result,
+      ['день', 'дня', 'дней']
+    )} карантина`;
+    document.title = title;
+  }
+
+  function getNumEnding(iNumber, aEndings) {
+    var sEnding, i;
+    iNumber = iNumber % 100;
+    if (iNumber >= 11 && iNumber <= 19) {
+      sEnding = aEndings[2];
+    } else {
+      i = iNumber % 10;
+      switch (i) {
+        case 1:
+          sEnding = aEndings[0];
+          break;
+        case 2:
+        case 3:
+        case 4:
+          sEnding = aEndings[1];
+          break;
+        default:
+          sEnding = aEndings[2];
+      }
+    }
+    return sEnding;
+  }
 
   const firstValues = {
     quantityRolls: [
       'Сколько рулонов успел купить',
       1,
       100,
-      props.defaultValues.quantityRolls,
-      props.quantityRolls,
-      props.setQuantityRolls
+      defaultValues.quantityRolls,
+      quantityRolls,
+      setQuantityRolls
     ],
     quantityToilets: [
       'Посещений туалета в день',
       1,
       20,
-      props.defaultValues.quantityToilets,
-      props.quantityToilets,
-      props.setQuantityToilets
+      defaultValues.quantityToilets,
+      quantityToilets,
+      setQuantityToilets
     ]
   };
 
@@ -70,41 +108,41 @@ export const Sliders = props => {
       'Сколько бумажек отрываешь за одно посещение',
       1,
       15,
-      props.defaultValues.averageWipes,
-      props.averageWipes,
-      props.setAverageWipes
+      defaultValues.averageWipes,
+      averageWipes,
+      setAverageWipes
     ],
     sheetsWipe: [
       'Бумажка состоит из количества салфеток',
       1,
       10,
-      props.defaultValues.sheetsWipe,
-      props.sheetsWipe,
-      props.setSheetsWipe
+      defaultValues.sheetsWipe,
+      sheetsWipe,
+      setSheetsWipe
     ],
     sheetsRoll: [
       'Салфеток в одном рулоне',
       120,
       500,
-      props.defaultValues.sheetsRoll,
-      props.sheetsRoll,
-      props.setSheetsRoll
+      defaultValues.sheetsRoll,
+      sheetsRoll,
+      setSheetsRoll
     ],
     peopleHome: [
       'Людей в семье',
       1,
       10,
-      props.defaultValues.peopleHome,
-      props.peopleHome,
-      props.setPeopleHome
+      defaultValues.peopleHome,
+      peopleHome,
+      setPeopleHome
     ],
     daysQuarantine: [
       'Дней карантина',
       1,
       90,
-      props.defaultValues.daysQuarantine,
-      props.daysQuarantine,
-      props.setDaysQuarantine
+      defaultValues.daysQuarantine,
+      daysQuarantine,
+      setDaysQuarantine
     ]
   };
 
@@ -133,6 +171,7 @@ export const Sliders = props => {
           min={min}
           max={max}
           color='secondary'
+          key={shortId}
         />
       </>
     );
@@ -152,7 +191,8 @@ export const Sliders = props => {
   ];
 
   return (
-    <>
+    <Container maxWidth='lg'>
+      <Header result={result} percent={percent} />
       <div className={classes.root}>{createFirstSliders}</div>
       <Button color='secondary'>
         Здесь можно настроить дополнительные параметры
@@ -160,6 +200,6 @@ export const Sliders = props => {
 
       <Divider />
       <div className={classes.root}>{createSecondSliders}</div>
-    </>
+    </Container>
   );
 };

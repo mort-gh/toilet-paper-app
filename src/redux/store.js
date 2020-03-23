@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import { slider } from './reducer';
+import { result } from './reducer';
 
 const rootReducer = combineReducers({
-  slider
+  result
 });
 
 export const store = createStore(rootReducer, devToolsEnhancer());

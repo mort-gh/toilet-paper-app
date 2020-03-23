@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import { styles } from './Header.module';
-
 import { Twitter, Facebook, Telegram, Whatsapp } from 'react-social-sharing';
 
 const title = ' Сколько нужно туалетной бумаги?';
@@ -33,7 +32,7 @@ export const Header = ({ result, percent }) => {
     return sEnding;
   }
 
-  const BASE_URL = 'https://mort-gh.github.io/toilet-paper-app/build/';
+  const BASE_URL = 'https://born2code.wtf/';
 
   return (
     <div style={styles.headerBlock}>
@@ -53,10 +52,8 @@ export const Header = ({ result, percent }) => {
         <hr style={styles.hr} />
 
         <Typography style={styles.title} variant='h4' gutterBottom>
-          Вы продержитесь
-          <Typography style={styles.result} variant='span'>
-            {result}
-          </Typography>
+          Вы продержитесь {window.innerWidth < 500 && <br />}
+          <Typography style={styles.result}>{result}</Typography>
           {getNumEnding(result, ['день', 'дня', 'дней'])}
         </Typography>
 
