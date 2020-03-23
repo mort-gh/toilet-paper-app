@@ -33,7 +33,7 @@ export const Header = ({ result, percent }) => {
     return sEnding;
   }
 
-  const BASE_URL = 'https://mort-gh.github.io/toilet-paper-app/';
+  const BASE_URL = 'https://mort-gh.github.io/toilet-paper-app/build/';
 
   return (
     <div style={styles.headerBlock}>

@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.49cfb9b6.chunk.js",
-    "main.js.map": "/static/js/main.49cfb9b6.chunk.js.map",
+    "main.js": "/static/js/main.931e521e.chunk.js",
+    "main.js.map": "/static/js/main.931e521e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.52f9e3ee.js",
     "runtime-main.js.map": "/static/js/runtime-main.52f9e3ee.js.map",
     "static/js/2.748a401c.chunk.js": "/static/js/2.748a401c.chunk.js",
     "static/js/2.748a401c.chunk.js.map": "/static/js/2.748a401c.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.92f044703acd2e12fb74d18c78512eec.js": "/precache-manifest.92f044703acd2e12fb74d18c78512eec.js",
+    "precache-manifest.c1ec75b0a256efe8e2c6094f7667c55f.js": "/precache-manifest.c1ec75b0a256efe8e2c6094f7667c55f.js",
     "service-worker.js": "/service-worker.js",
     "static/js/2.748a401c.chunk.js.LICENSE.txt": "/static/js/2.748a401c.chunk.js.LICENSE.txt",
     "static/media/toilet_paper.png": "/static/media/toilet_paper.50c653de.png"
@@ -15,6 +15,6 @@
   "entrypoints": [
     "static/js/runtime-main.52f9e3ee.js",
     "static/js/2.748a401c.chunk.js",
-    "static/js/main.49cfb9b6.chunk.js"
+    "static/js/main.931e521e.chunk.js"
   ]
 }
