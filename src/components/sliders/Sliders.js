@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
   root: {
-    padding: 50,
+    padding: 30,
     width: '100%'
   }
 });
@@ -43,15 +43,7 @@ const PrettoSlider = withStyles({
   }
 })(Slider);
 
-export const Sliders = () => {
-  const [quantityRolls, setQuantityRolls] = useState('');
-  const [quantityToilets, setQuantityToilets] = useState('');
-  const [averageWipes, setAverageWipes] = useState('');
-  const [sheetsWipe, setSheetsWipe] = useState('');
-  const [sheetsRoll, setSheetsRoll] = useState('');
-  const [peopleHome, setPeopleHome] = useState('');
-  const [daysQuarantine, setDaysQuarantine] = useState('');
-
+export const Sliders = props => {
   const classes = useStyles();
 
   const firstValues = {
@@ -60,16 +52,16 @@ export const Sliders = () => {
       1,
       100,
       1,
-      quantityRolls,
-      setQuantityRolls
+      props.quantityRolls,
+      props.setQuantityRolls
     ],
     quantityToilets: [
       'Посещений туалета в день',
       1,
       20,
       2,
-      quantityToilets,
-      setQuantityToilets
+      props.quantityToilets,
+      props.setQuantityToilets
     ]
   };
 
@@ -79,33 +71,40 @@ export const Sliders = () => {
       1,
       15,
       2,
-      averageWipes,
-      setAverageWipes
+      props.averageWipes,
+      props.setAverageWipes
     ],
     sheetsWipe: [
       'Бумажка состоит из количества салфеток',
       1,
       10,
       2,
-      sheetsWipe,
-      setSheetsWipe
+      props.sheetsWipe,
+      props.setSheetsWipe
     ],
     sheetsRoll: [
       'Салфеток в одном рулоне',
       120,
       500,
       140,
-      sheetsRoll,
-      setSheetsRoll
+      props.sheetsRoll,
+      props.setSheetsRoll
     ],
-    peopleHome: ['Людей в семье', 1, 10, 1, peopleHome, setPeopleHome],
+    peopleHome: [
+      'Людей в семье',
+      1,
+      10,
+      1,
+      props.peopleHome,
+      props.setPeopleHome
+    ],
     daysQuarantine: [
       'Дней карантина',
       1,
       90,
       20,
-      daysQuarantine,
-      setDaysQuarantine
+      props.daysQuarantine,
+      props.setDaysQuarantine
     ]
   };
 

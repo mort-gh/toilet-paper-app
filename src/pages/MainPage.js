@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Sliders } from '../components/sliders/Sliders';
 import { Header } from '../components/header/Header';
@@ -8,7 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import SettingsIcon from '@material-ui/icons/Settings';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
-      //   width: `calc(100% - ${drawerWidth}px)`,
       width: `calc(100% - ${drawerWidth})`,
       marginLeft: drawerWidth
     }
@@ -39,8 +38,6 @@ const useStyles = makeStyles(theme => ({
       display: 'none'
     }
   },
-  // necessary for content to be below app bar
-  //   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth
   },
@@ -50,11 +47,53 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const MainPage = props => {
-  const { container } = props;
+export const MainPage = ({ container }) => {
+  const [result, setResult] = useState(0);
+  const [quantityRolls, setQuantityRolls] = useState(0);
+  const [quantityToilets, setQuantityToilets] = useState(0);
+  const [averageWipes, setAverageWipes] = useState(0);
+  const [sheetsWipe, setSheetsWipe] = useState(0);
+  const [sheetsRoll, setSheetsRoll] = useState(0);
+  const [peopleHome, setPeopleHome] = useState(0);
+  const [daysQuarantine, setDaysQuarantine] = useState(0);
+
+  // useEffect(() => {
+  //   getResult();
+  // }, [result]);
+
+  const initialState = {
+    quantityRolls,
+    setQuantityRolls,
+    quantityToilets,
+    setQuantityToilets,
+    averageWipes,
+    setAverageWipes,
+    sheetsWipe,
+    setSheetsWipe,
+    sheetsRoll,
+    setSheetsRoll,
+    peopleHome,
+    setPeopleHome,
+    daysQuarantine,
+    setDaysQuarantine
+  };
+
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const getResult = () => {
+    const sum =
+      quantityRolls +
+      quantityToilets +
+      averageWipes +
+      sheetsWipe +
+      sheetsRoll +
+      peopleHome +
+      daysQuarantine;
+
+    setResult(sum);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -70,7 +109,7 @@ export const MainPage = props => {
           onClick={handleDrawerToggle}
           className={classes.menuButton}
         >
-          <MenuIcon />
+          <SettingsIcon />
         </IconButton>
         <ArrowBackIcon />
         <Typography variant='h6' noWrap>
@@ -83,7 +122,7 @@ export const MainPage = props => {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <Sliders />
+      <Sliders {...initialState} result={result} getResult={getResult} />
     </div>
   );
 
@@ -92,7 +131,6 @@ export const MainPage = props => {
       <CssBaseline />
       {window.innerWidth < 600 && appBar}
       <nav className={classes.drawer} aria-label='mailbox folders'>
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation='css'>
           <Drawer
             container={container}
@@ -104,7 +142,7 @@ export const MainPage = props => {
               paper: classes.drawerPaper
             }}
             ModalProps={{
-              keepMounted: true // Better open performance on mobile.
+              keepMounted: true
             }}
           >
             {drawer}
@@ -124,7 +162,7 @@ export const MainPage = props => {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Header />
+        <Header result={result} />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
