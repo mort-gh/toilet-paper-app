@@ -57,7 +57,7 @@ export const Sliders = () => {
     setPercent(Math.round((result / g) * 100));
 
   function changeDocumentTitle(result) {
-    let title = `Мого туалетного паперу вистачить на ${result} ${getNumEnding(
+    let title = `Туалетного паперу вистачить на ${result} ${getNumEnding(
       result,
       ['день', 'дні', 'днів']
     )} карантина`;
