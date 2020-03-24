@@ -2,9 +2,9 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import { styles } from './Header.module';
-import { Twitter, Facebook, Telegram, Whatsapp } from 'react-social-sharing';
+// import { Twitter, Facebook, Telegram, Whatsapp } from 'react-social-sharing';
 
-const title = 'Скільки потрібно туалетного паперу?';
+const title = 'Скільки потрібно туалетного паперу на час карантину?';
 const description =
   'Онлайн калькулятор, щоб розрахувати стратегічні запаси туалетного паперу на період пандемії';
 
@@ -32,7 +32,7 @@ export const Header = ({ result, percent }) => {
     return sEnding;
   }
 
-  const BASE_URL = 'https://born2code.wtf/';
+  // const BASE_URL = 'https://toiletpaper.tech/';
 
   return (
     <div style={styles.headerBlock}>
@@ -63,10 +63,10 @@ export const Header = ({ result, percent }) => {
         </Typography>
       </Container>
 
-      <Facebook link={BASE_URL} />
+      {/* <Facebook link={BASE_URL} />
       <Twitter link={BASE_URL} />
       <Telegram link={BASE_URL} />
-      <Whatsapp link={BASE_URL} />
+      <Whatsapp link={BASE_URL} /> */}
     </div>
   );
 };
