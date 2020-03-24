@@ -89,7 +89,7 @@ export const Sliders = () => {
 
   const firstValues = {
     quantityRolls: [
-      'Кількість рулончиків, яку ти встиг придбати',
+      'Скільки рулончиків ти встиг придбати',
       1,
       100,
       defaultValues.quantityRolls,
@@ -108,7 +108,7 @@ export const Sliders = () => {
 
   const secondValues = {
     averageWipes: [
-      'Скільки папірців відриваеш під час одного відвідування',
+      'Скільки папірців відриваєш під час одного відвідування',
       1,
       15,
       defaultValues.averageWipes,
@@ -116,7 +116,7 @@ export const Sliders = () => {
       setAverageWipes
     ],
     sheetsWipe: [
-      'Із скількох ламтиків складається відірванний папірець?',
+      'Із скількох шматочків складається відірваний папірець?',
       1,
       10,
       defaultValues.sheetsWipe,
@@ -124,7 +124,7 @@ export const Sliders = () => {
       setSheetsWipe
     ],
     sheetsRoll: [
-      'Скільки ламтиків містить один рулончик?',
+      'Із скількох шматочків складається рулончик?',
       120,
       500,
       defaultValues.sheetsRoll,
