@@ -4,9 +4,9 @@ import Container from '@material-ui/core/Container';
 import { styles } from './Header.module';
 import { Twitter, Facebook, Telegram, Whatsapp } from 'react-social-sharing';
 
-const title = ' Сколько нужно туалетной бумаги?';
+const title = 'Скільки потрібно туалетного паперу?';
 const description =
-  'Простой калькулятор, чтобы расчитать, сколько туалетной бумаги вам нужно, чтобы пережить пандемию';
+  'Онлайн калькулятор, щоб розрахувати стратегічні запаси туалетного паперу на період пандемії';
 
 export const Header = ({ result, percent }) => {
   function getNumEnding(iNumber, aEndings) {
@@ -43,7 +43,7 @@ export const Header = ({ result, percent }) => {
         <img
           width='120'
           src={require('../../images/toilet_paper.png')}
-          alt='Туалетная бумажка'
+          alt='Туалетній папір'
         />
         <Typography style={styles.description} color='primary'>
           {description}
@@ -51,14 +51,15 @@ export const Header = ({ result, percent }) => {
 
         <hr style={styles.hr} />
 
-        <Typography style={styles.title} variant='h4' gutterBottom>
-          Вы продержитесь {window.innerWidth < 500 && <br />}
-          <Typography style={styles.result}>{result}</Typography>
-          {getNumEnding(result, ['день', 'дня', 'дней'])}
+        <Typography style={styles.title} variant='h5' gutterBottom>
+          Ви протримаєтесь
+          {window.innerWidth < 500 && <br />}
+          <span style={styles.result}>{result}</span>
+          {getNumEnding(result, ['день', 'дні', 'днів'])}
         </Typography>
 
         <Typography style={styles.title} variant='h6' gutterBottom>
-          или {percent}% вашего карантина
+          або {percent}% карантину
         </Typography>
       </Container>
 

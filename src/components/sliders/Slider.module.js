@@ -7,6 +7,10 @@ export const useStyles = makeStyles({
     margin: '0 auto',
     marginTop: 50,
     marginBottom: 50
+  },
+  buttonBlock: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 });
 

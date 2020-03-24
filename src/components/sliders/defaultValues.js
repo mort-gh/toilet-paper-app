@@ -1,5 +1,5 @@
 export const defaultValues = {
-  quantityRolls: 1,
+  quantityRolls: 8,
   quantityToilets: 2,
   averageWipes: 2,
   sheetsWipe: 2,

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useStyles, PrettoSlider } from './Slider.module';
 import { Header } from '../header/Header';
+import { About } from '../about/About';
+import { Donation } from '../donation/Donation';
+import { Moz } from '../moz/Moz';
 import shortId from 'shortid';
 
 import { defaultValues } from './defaultValues';
@@ -45,18 +48,18 @@ export const Sliders = () => {
     getTotalResult
   ]);
 
-  async function getTotalResult(a, b, c, d, e, f) {
-    await setResult(Math.round((a * e) / (d * c * b * f)));
-    await changeDocumentTitle(result);
+  function getTotalResult(a, b, c, d, e, f) {
+    setResult(Math.round((a * e) / (d * c * b * f)));
+    changeDocumentTitle(result);
   }
 
   const getTotalPercent = (result, g) =>
     setPercent(Math.round((result / g) * 100));
 
   function changeDocumentTitle(result) {
-    let title = `Моей туалетной бумаги хватит ${result} на ${getNumEnding(
+    let title = `Мого туалетного паперу вистачить на ${result} ${getNumEnding(
       result,
-      ['день', 'дня', 'дней']
+      ['день', 'дні', 'днів']
     )} карантина`;
     document.title = title;
   }
@@ -86,7 +89,7 @@ export const Sliders = () => {
 
   const firstValues = {
     quantityRolls: [
-      'Сколько рулонов успел купить',
+      'Кількість рулончиків, яку ти встиг придбати',
       1,
       100,
       defaultValues.quantityRolls,
@@ -94,7 +97,7 @@ export const Sliders = () => {
       setQuantityRolls
     ],
     quantityToilets: [
-      'Посещений туалета в день',
+      'Скільки разів на день тобі потрібно усамітнюватися',
       1,
       20,
       defaultValues.quantityToilets,
@@ -105,7 +108,7 @@ export const Sliders = () => {
 
   const secondValues = {
     averageWipes: [
-      'Сколько бумажек отрываешь за одно посещение',
+      'Скільки папірців відриваеш під час одного відвідування',
       1,
       15,
       defaultValues.averageWipes,
@@ -113,7 +116,7 @@ export const Sliders = () => {
       setAverageWipes
     ],
     sheetsWipe: [
-      'Бумажка состоит из количества салфеток',
+      'Із скількох ламтиків складається відірванний папірець?',
       1,
       10,
       defaultValues.sheetsWipe,
@@ -121,7 +124,7 @@ export const Sliders = () => {
       setSheetsWipe
     ],
     sheetsRoll: [
-      'Салфеток в одном рулоне',
+      'Скільки ламтиків містить один рулончик?',
       120,
       500,
       defaultValues.sheetsRoll,
@@ -129,7 +132,7 @@ export const Sliders = () => {
       setSheetsRoll
     ],
     peopleHome: [
-      'Людей в семье',
+      'Кількість людей вдома',
       1,
       10,
       defaultValues.peopleHome,
@@ -137,7 +140,7 @@ export const Sliders = () => {
       setPeopleHome
     ],
     daysQuarantine: [
-      'Дней карантина',
+      'Кількість днів карантину',
       1,
       90,
       defaultValues.daysQuarantine,
@@ -190,16 +193,34 @@ export const Sliders = () => {
     newSliderTemplate(...secondValues.daysQuarantine)
   ];
 
+  const headingButtonDivider = text => (
+    <>
+      <div className={classes.buttonBlock}>
+        <Button color='secondary'>{text}</Button>
+      </div>
+
+      <Divider />
+    </>
+  );
+
   return (
     <Container maxWidth='lg'>
       <Header result={result} percent={percent} />
       <div className={classes.root}>{createFirstSliders}</div>
-      <Button color='secondary'>
-        Здесь можно настроить дополнительные параметры
-      </Button>
-
-      <Divider />
+      {headingButtonDivider('Тут можна налаштувати додаткові параметри')}
       <div className={classes.root}>{createSecondSliders}</div>
+      {headingButtonDivider('Про проект')}
+      <div className={classes.root}>
+        <About />
+      </div>
+      {headingButtonDivider('Подяка')}
+      <div className={classes.root}>
+        <Donation />
+      </div>
+      {headingButtonDivider('Що таке COVID-19?')}
+      <div className={classes.root}>
+        <Moz />
+      </div>
     </Container>
   );
 };
