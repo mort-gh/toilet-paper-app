@@ -1,12 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStyles, PrettoSlider } from './Slider.module';
+
 import { Header } from '../header/Header';
 import { About } from '../about/About';
 import { Donation } from '../donation/Donation';
 import { Moz } from '../moz/Moz';
-import shortId from 'shortid';
+
 import { getNumEnding } from '../../changeDaysName';
-import { defaultValues } from './defaultValues';
+import { firstValues, secondValues } from './values';
+import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import lang from '../../lang/lang';
+import shortId from 'shortid';
+
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -24,6 +29,7 @@ export const Sliders = () => {
   const [daysQuarantine, setDaysQuarantine] = useState(0);
 
   const classes = useStyles();
+  const location = checkUserBrowserLanguage();
 
   useEffect(() => {
     getTotalResult(
@@ -53,83 +59,27 @@ export const Sliders = () => {
     console.log(userLang);
   }
 
-  function getTotalResult(a, b, c, d, e, f) {
-    setResult(Math.round((a * e) / (d * c * b * f)));
-    changeDocumentTitle(result);
+  async function getTotalResult(a, b, c, d, e, f) {
+    await setResult(Math.round((a * e) / (d * c * b * f)));
+    await changeDocumentTitle(result);
   }
 
   const getTotalPercent = (result, g) =>
     setPercent(Math.round((result / g) * 100));
 
   function changeDocumentTitle(result) {
-    let title = `Туалетного паперу вистачить на ${result} ${getNumEnding(
-      result,
-      ['день', 'дні', 'днів']
-    )} карантину`;
+    let title =
+      lang[location].title1 +
+      result +
+      getNumEnding(result, [
+        lang[location].day1,
+        lang[location].day2,
+        lang[location].day3
+      ]) +
+      lang[location].header5;
+
     document.title = title;
   }
-
-  const firstValues = {
-    quantityRolls: [
-      'Скільки рулончиків ти встиг придбати',
-      1,
-      100,
-      defaultValues.quantityRolls,
-      quantityRolls,
-      setQuantityRolls
-    ],
-    quantityToilets: [
-      'Скільки разів на день тобі потрібно усамітнюватися',
-      1,
-      20,
-      defaultValues.quantityToilets,
-      quantityToilets,
-      setQuantityToilets
-    ]
-  };
-
-  const secondValues = {
-    averageWipes: [
-      'Скільки папірців відриваєш під час одного відвідування',
-      1,
-      15,
-      defaultValues.averageWipes,
-      averageWipes,
-      setAverageWipes
-    ],
-    sheetsWipe: [
-      'Із скількох шматочків складається відірваний папірець?',
-      1,
-      10,
-      defaultValues.sheetsWipe,
-      sheetsWipe,
-      setSheetsWipe
-    ],
-    sheetsRoll: [
-      'Із скількох шматочків складається рулончик?',
-      120,
-      500,
-      defaultValues.sheetsRoll,
-      sheetsRoll,
-      setSheetsRoll
-    ],
-    peopleHome: [
-      'Кількість людей вдома',
-      1,
-      10,
-      defaultValues.peopleHome,
-      peopleHome,
-      setPeopleHome
-    ],
-    daysQuarantine: [
-      'Кількість днів карантину',
-      1,
-      90,
-      defaultValues.daysQuarantine,
-      daysQuarantine,
-      setDaysQuarantine
-    ]
-  };
 
   const newSliderTemplate = (
     title,
@@ -162,17 +112,36 @@ export const Sliders = () => {
     );
   };
 
+  const firstBlock = firstValues(
+    quantityRolls,
+    setQuantityRolls,
+    quantityToilets,
+    setQuantityToilets
+  );
+  const secondBlock = secondValues(
+    averageWipes,
+    setAverageWipes,
+    sheetsWipe,
+    setSheetsWipe,
+    sheetsRoll,
+    setSheetsRoll,
+    peopleHome,
+    setPeopleHome,
+    daysQuarantine,
+    setDaysQuarantine
+  );
+
   const createFirstSliders = [
-    newSliderTemplate(...firstValues.quantityRolls),
-    newSliderTemplate(...firstValues.quantityToilets)
+    newSliderTemplate(...firstBlock.quantityRolls),
+    newSliderTemplate(...firstBlock.quantityToilets)
   ];
 
   const createSecondSliders = [
-    newSliderTemplate(...secondValues.averageWipes),
-    newSliderTemplate(...secondValues.sheetsWipe),
-    newSliderTemplate(...secondValues.sheetsRoll),
-    newSliderTemplate(...secondValues.peopleHome),
-    newSliderTemplate(...secondValues.daysQuarantine)
+    newSliderTemplate(...secondBlock.averageWipes),
+    newSliderTemplate(...secondBlock.sheetsWipe),
+    newSliderTemplate(...secondBlock.sheetsRoll),
+    newSliderTemplate(...secondBlock.peopleHome),
+    newSliderTemplate(...secondBlock.daysQuarantine)
   ];
 
   const headingButtonDivider = text => (
@@ -185,36 +154,24 @@ export const Sliders = () => {
     </>
   );
 
-  const googleAnalytics = `<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156511211-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-156511211-1');
-</script>
-`;
-
   return (
     <Container maxWidth='lg'>
       <Header result={result} percent={percent} />
       <div className={classes.root}>{createFirstSliders}</div>
-      {headingButtonDivider('Тут можна налаштувати додаткові параметри')}
+      {headingButtonDivider(lang[location].heading1)}
       <div className={classes.root}>{createSecondSliders}</div>
-      {headingButtonDivider('Про проект')}
+      {headingButtonDivider(lang[location].heading2)}
       <div className={classes.root}>
         <About />
       </div>
-      {headingButtonDivider('Подяка')}
+      {headingButtonDivider(lang[location].heading3)}
       <div className={classes.root}>
         <Donation />
       </div>
-      {headingButtonDivider('Що таке COVID-19?')}
+      {headingButtonDivider(lang[location].heading4)}
       <div className={classes.root}>
         <Moz />
       </div>
-      <div dangerouslySetInnerHTML={{ __html: googleAnalytics }} />
     </Container>
   );
 };

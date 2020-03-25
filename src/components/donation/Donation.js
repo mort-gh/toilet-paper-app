@@ -30,19 +30,15 @@ export const Donation = () => {
       <Typography style={styles.text}>{lang[location].donation1}</Typography>
 
       <br />
-      <Typography>
-        <form
-          style={styles.form}
-          id='payment'
-          name='payment'
-          method='post'
-          action='https://sci.interkassa.com/'
-          enctype='utf-8'
+      <Typography style={styles.form}>
+        <a
+          href='https://www.liqpay.ua/ru/checkout/card/gnatyukr'
           target='_blank'
+          rel='noopener noreferrer'
+          style={styles.button}
         >
-          <input type='hidden' name='s' value='4p8MIgvPWv' />
-          <input type='submit' value='' style={styles.button} />
-        </form>
+          {''}
+        </a>
       </Typography>
       <br />
       <Typography style={styles.text}>{lang[location].donation2}</Typography>
