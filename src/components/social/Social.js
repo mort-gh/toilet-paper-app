@@ -1,4 +1,6 @@
 import React from 'react';
+import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import lang from '../../lang/lang';
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -7,7 +9,6 @@ import {
   ViberShareButton,
   WhatsappShareButton
 } from 'react-share';
-
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -30,35 +31,61 @@ const styles = {
 };
 
 export const Social = () => {
+  const location = checkUserBrowserLanguage();
+
   return (
     <div style={styles.socialBlock}>
       <div style={styles.socialIcon}>
-        <FacebookShareButton url={BASE_URL} children='Facebook'>
+        <FacebookShareButton
+          url={BASE_URL}
+          quote={lang[location].social1}
+          children='Facebook'
+        >
           <FacebookIcon size={36} round={true} />
         </FacebookShareButton>
       </div>
       <div style={styles.socialIcon}>
-        <TwitterShareButton url={BASE_URL} children='Twitter'>
+        <TwitterShareButton
+          url={BASE_URL}
+          title={lang[location].social1}
+          children='Twitter'
+        >
           <TwitterIcon size={36} round={true} />
         </TwitterShareButton>
       </div>
       <div style={styles.socialIcon}>
-        <LinkedinShareButton url={BASE_URL} children='LinkerIn'>
+        <LinkedinShareButton
+          summary={lang[location].social1}
+          url={BASE_URL}
+          children='LinkerIn'
+        >
           <LinkedinIcon size={36} round={true} />
         </LinkedinShareButton>
       </div>
       <div style={styles.socialIcon}>
-        <TelegramShareButton url={BASE_URL} children='Telegram'>
+        <TelegramShareButton
+          title={lang[location].social1}
+          url={BASE_URL}
+          children='Telegram'
+        >
           <TelegramIcon size={36} round={true} />
         </TelegramShareButton>
       </div>
       <div style={styles.socialIcon}>
-        <ViberShareButton url={BASE_URL} children='Viber'>
+        <ViberShareButton
+          url={BASE_URL}
+          title={lang[location].social1}
+          children='Viber'
+        >
           <ViberIcon size={36} round={true} />
         </ViberShareButton>
       </div>
       <div style={styles.socialIcon}>
-        <WhatsappShareButton url={BASE_URL} children='WatsApp'>
+        <WhatsappShareButton
+          url={BASE_URL}
+          title={lang[location].social1}
+          children='WatsApp'
+        >
           <WhatsappIcon size={36} round={true} />
         </WhatsappShareButton>
       </div>

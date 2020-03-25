@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useStyles, PrettoSlider } from './Slider.module';
 import { Header } from '../header/Header';
 import { About } from '../about/About';
@@ -6,9 +6,7 @@ import { Donation } from '../donation/Donation';
 import { Moz } from '../moz/Moz';
 import shortId from 'shortid';
 import { getNumEnding } from '../../changeDaysName';
-
 import { defaultValues } from './defaultValues';
-
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -37,6 +35,7 @@ export const Sliders = () => {
       peopleHome
     );
     getTotalPercent(result, daysQuarantine);
+    getUserBrowserLanguage();
   }, [
     quantityRolls,
     quantityToilets,
@@ -48,6 +47,11 @@ export const Sliders = () => {
     result,
     getTotalResult
   ]);
+
+  function getUserBrowserLanguage() {
+    const userLang = navigator.language || navigator.userLanguage;
+    console.log(userLang);
+  }
 
   function getTotalResult(a, b, c, d, e, f) {
     setResult(Math.round((a * e) / (d * c * b * f)));

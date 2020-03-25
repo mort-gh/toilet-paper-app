@@ -1,23 +1,17 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import lang from '../../lang/lang';
 
 export const About = () => {
+  const location = checkUserBrowserLanguage();
+
   return (
     <>
-      <Typography>
-        Цей ресурс розроблений, щоб ви мали змогу розрахувати свої стратегічні
-        запаси туалетного паперу на період карантину. Верхній блок сторінки
-        відображає поточний результат. Скористайтеся слайдерами нижче, щоб
-        налаштувати свої параметри. Результат є приблизним і залежить від
-        особливостей кожного виробника паперу. Результат не враховує різні
-        параметри для окремого члена сім'ї.
-      </Typography>
+      <Typography>{lang[location].about1}</Typography>
       <br />
-      <Typography>
-        Автор проекту - Рома Гнатюк. Якщо є запитання чи пропозиції - напишіть
-        мені у соціальних мережах за посиланнями нижче.
-      </Typography>
+      <Typography>{lang[location].about2}</Typography>
       <br />
       <Typography>
         <Link color='secondary' href='https://www.facebook.com/gnatyuk.roman'>

@@ -4,35 +4,39 @@ import { getNumEnding } from '../../changeDaysName';
 import Container from '@material-ui/core/Container';
 import { Social } from '../social/Social';
 import { styles } from './Header.module';
-
-const title = 'Скільки потрібно туалетного паперу на час карантину?';
-const description =
-  'Онлайн калькулятор, щоб розрахувати стратегічні запаси туалетного паперу на період пандемії';
+import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import lang from '../../lang/lang';
 
 export const Header = ({ result, percent }) => {
+  const location = checkUserBrowserLanguage();
+
   return (
     <div style={styles.headerBlock}>
       <Container maxWidth='lg'>
         <Typography style={styles.title} variant='h5' gutterBottom>
-          {title}
+          {lang[location].header1}
         </Typography>
         <img
           width='120'
           src={require('../../images/toilet_paper.png')}
-          alt='Туалетній папір'
+          alt='Toilet paper'
         />
         <Typography style={styles.description} color='primary'>
-          {description}
+          {lang[location].header2}
         </Typography>
         <hr style={styles.hr} />
         <Typography style={styles.titleResult} variant='h5' gutterBottom>
-          Ви протримаєтесь
+          {lang[location].header3}
           {window.innerWidth < 500 && <br />}
           <span style={styles.result}>{result}</span>
-          {getNumEnding(result, ['день', 'дні', 'днів'])}
+          {getNumEnding(result, [
+            lang[location].day1,
+            lang[location].day2,
+            lang[location].day3
+          ])}
         </Typography>
         <Typography style={styles.title} variant='h6' gutterBottom>
-          або {percent}% карантину
+          {lang[location].header4} {percent}% {lang[location].header5}
         </Typography>
         <Typography>
           <Social />
