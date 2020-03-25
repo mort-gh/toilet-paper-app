@@ -18,6 +18,9 @@ export const styles = {
     border: 'none',
     height: 1
   },
+  titleResult: {
+    color: 'white'
+  },
   result: {
     color: 'white',
     fontSize: '50px',

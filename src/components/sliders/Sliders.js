@@ -5,6 +5,7 @@ import { About } from '../about/About';
 import { Donation } from '../donation/Donation';
 import { Moz } from '../moz/Moz';
 import shortId from 'shortid';
+import { getNumEnding } from '../../changeDaysName';
 
 import { defaultValues } from './defaultValues';
 
@@ -60,31 +61,8 @@ export const Sliders = () => {
     let title = `Туалетного паперу вистачить на ${result} ${getNumEnding(
       result,
       ['день', 'дні', 'днів']
-    )} карантина`;
+    )} карантину`;
     document.title = title;
-  }
-
-  function getNumEnding(iNumber, aEndings) {
-    var sEnding, i;
-    iNumber = iNumber % 100;
-    if (iNumber >= 11 && iNumber <= 19) {
-      sEnding = aEndings[2];
-    } else {
-      i = iNumber % 10;
-      switch (i) {
-        case 1:
-          sEnding = aEndings[0];
-          break;
-        case 2:
-        case 3:
-        case 4:
-          sEnding = aEndings[1];
-          break;
-        default:
-          sEnding = aEndings[2];
-      }
-    }
-    return sEnding;
   }
 
   const firstValues = {
@@ -203,6 +181,17 @@ export const Sliders = () => {
     </>
   );
 
+  const googleAnalytics = `<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156511211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156511211-1');
+</script>
+`;
+
   return (
     <Container maxWidth='lg'>
       <Header result={result} percent={percent} />
@@ -221,6 +210,7 @@ export const Sliders = () => {
       <div className={classes.root}>
         <Moz />
       </div>
+      <div dangerouslySetInnerHTML={{ __html: googleAnalytics }} />
     </Container>
   );
 };
