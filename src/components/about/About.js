@@ -1,6 +1,5 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import { checkUserBrowserLanguage } from '../../checkUserLanguage';
 import lang from '../../lang/lang';
 
@@ -11,20 +10,16 @@ export const About = () => {
     <>
       <Typography>{lang[location].about1}</Typography>
       <br />
-      <Typography>{lang[location].about2}</Typography>
+      <Typography>
+        Сайт создан по технологии SPA (single page application) с использованием
+        библиотек React, Redux и Material-UI. На текущий момент протестирован на
+        большинстве используемых устройств и является кросс-платформенным.
+      </Typography>
       <br />
       <Typography>
-        <Link color='secondary' href='https://www.facebook.com/gnatyuk.roman'>
-          Facebook
-        </Link>
-        &nbsp;|&nbsp;
-        <Link color='secondary' href='https://twitter.com/roma_hnatiuk'>
-          Twitter
-        </Link>
-        &nbsp;|&nbsp;
-        <Link color='secondary' href='mailto:gnatyuk.info@gmail.com'>
-          gnatyuk.info@gmail.com
-        </Link>
+        Имейте ввиду, что проект является мультиязычным и поддерживет
+        украинский, английский и русский языки. Отображаемый язык на сайте
+        зависит от настроек вашего браузера.
       </Typography>
     </>
   );

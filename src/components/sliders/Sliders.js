@@ -5,6 +5,7 @@ import { Header } from '../header/Header';
 import { About } from '../about/About';
 import { Donation } from '../donation/Donation';
 import { Moz } from '../moz/Moz';
+import { Ps } from '../ps/Ps';
 
 import { getNumEnding } from '../../changeDaysName';
 import { firstValues, secondValues } from './values';
@@ -41,7 +42,6 @@ export const Sliders = () => {
       peopleHome
     );
     getTotalPercent(result, daysQuarantine);
-    getUserBrowserLanguage();
   }, [
     quantityRolls,
     quantityToilets,
@@ -53,11 +53,6 @@ export const Sliders = () => {
     result,
     getTotalResult
   ]);
-
-  function getUserBrowserLanguage() {
-    const userLang = navigator.language || navigator.userLanguage;
-    console.log(userLang);
-  }
 
   async function getTotalResult(a, b, c, d, e, f) {
     await setResult(Math.round((a * e) / (d * c * b * f)));
@@ -171,6 +166,10 @@ export const Sliders = () => {
       {headingButtonDivider(lang[location].heading4)}
       <div className={classes.root}>
         <Moz />
+      </div>
+      {headingButtonDivider(lang[location].heading5)}
+      <div className={classes.root}>
+        <Ps />
       </div>
     </Container>
   );

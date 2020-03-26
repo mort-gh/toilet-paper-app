@@ -27,8 +27,8 @@ export const ogMetaTags = () => {
     content="Сколько нужно туалетной бумаги, чтобы пережить пандемию? Онлайн калькулятор">
   <meta property="twitter:description"
     content="Онлайн калькулятор, чтобы рассчитать стратегические запасы туалетной бумаги на период пандемии">
-  <meta property="twitter:image" content="https://i.ibb.co/FgKgxNg/toiletpapersocial.png">`;
+  <meta property="twitter:image" content="https://i.ibb.co/FgKgxNg/toiletpapersocial.png">;
   } else if (userLang.toLowerCase().includes('en')) {
-    return ``;
+    return "" `;
   }
 };
