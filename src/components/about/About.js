@@ -21,6 +21,10 @@ export const About = () => {
         <Link color='secondary' href='https://twitter.com/roma_hnatiuk'>
           Twitter
         </Link>
+        &nbsp;|&nbsp;
+        <Link color='secondary' href='mailto:gnatyuk.info@gmail.com'>
+          gnatyuk.info@gmail.com
+        </Link>
       </Typography>
     </>
   );

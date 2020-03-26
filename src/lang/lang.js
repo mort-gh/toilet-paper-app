@@ -5,7 +5,7 @@ export default [
     about1:
       "Цей ресурс розроблений, щоб ви мали змогу розрахувати свої стратегічні запаси туалетного паперу на період карантину. Верхній блок сторінки відображає поточний результат. Скористайтеся слайдерами нижче, щоб налаштувати свої параметри. Результат є приблизним і залежить від особливостей кожного виробника паперу. Результат не враховує різні параметри для окремого члена сім'ї.",
     about2:
-      'Автор проекту - Рома Гнатюк. Якщо є запитання чи пропозиції - напишіть мені у соціальних мережах за посиланнями нижче.',
+      'Автор проекту - Рома Гнатюк. Якщо є запитання чи пропозиції - напишіть мені у соціальних мережах за посиланнями нижче або на вказаний email.',
     donation1:
       'Не кожен має змогу потрапити до магазину і запастися туалетним папером та гречкою. Не будьте егоїстичними.',
     donation2: 'Дякую за Вашу турботу!',
@@ -41,7 +41,7 @@ export default [
     about1:
       'Этот ресурс разработан, чтобы вы могли рассчитать свои стратегические запасы туалетной бумаги в период карантина. Верхний блок страницы отображает текущий результат. Воспользуйтесь слайдерами ниже, чтобы настроить свои параметры. Результат является приблизительным и зависит от особенностей каждого производителя бумаги. Так же, не учитывает отдельные параметры для каждого члена семьи.',
     about2:
-      'Автор проекта - Рома Гнатюк. Если у вас есть вопросы или предложения - напишите мне в социальных сетях по ссылкам ниже.',
+      'Автор проекта - Рома Гнатюк. Если у вас есть вопросы или предложения - напишите мне в социальных сетях по ссылкам ниже или на указанный email.',
     donation1:
       'Не у каждого есть возможность попасть в магазин и запастись туалетной бумагой и гречкой. Не будьте эгоистичными.',
     donation2: 'Спасибо за Вашу заботу!',
@@ -77,9 +77,34 @@ export default [
     about1:
       'This resource is designed so that you can calculate your strategic toilet paper supplies during the quarantine period. The top block of the page displays the current result. Use the sliders below to customize your settings. The result is approximate and depends on the characteristics of each paper manufacturer. Also, it does not take into account the individual parameters for each family member.',
     about2:
-      'The author of the project is Roma Gnatyuk. If you have questions or suggestions - write to me on social networks using the links below.',
+      'The author of the project is Roma Gnatyuk. If you have questions or suggestions - write to me on social networks using the links below or email.',
     donation1:
       "Not everyone is able to get to a store and stock up on toilet roll. Don't be selfish.",
-    donation2: 'Thank you for your concern!'
+    donation2: 'Thank you for your concern!',
+    header1: 'How much toilet paper do you need for quarantine?',
+    header2: 'Online calculator toilet papers for a pandemic.',
+    header3: 'You will last',
+    header4: 'or',
+    header5: ' of your quarantine',
+    day1: 'day',
+    day2: 'days',
+    day3: 'days',
+    moz1:
+      'COVID-19 is a new disease that can affect your lungs and airways. It is caused by a virus called coronavirus. Stay home!',
+    moz2:
+      'Use the links below to get useful information about protection, quarantine security conditions, and the current status of the fight against COVID-19 in the world.',
+    social1: 'Online calculator toilet paper for a pandemic',
+    title1: 'Toilet paper is enough for ',
+    heading1: 'Here you can configure additional parameters.',
+    heading2: 'About',
+    heading3: 'Thanks',
+    heading4: 'What is COVID-19?',
+    sliders1: 'Rolls you have',
+    sliders2: 'Toilet visits per day',
+    sliders3: 'Average number of wipes per trip',
+    sliders4: 'Sheets per wipe',
+    sliders5: 'Sheets on roll',
+    sliders6: 'People in household',
+    sliders7: 'Days of quarantine'
   }
 ];
