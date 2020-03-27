@@ -151,10 +151,29 @@ export const Sliders = () => {
 
   return (
     <Container maxWidth='lg'>
+      <a name='top'></a>
       <Header result={result} percent={percent} />
       <div className={classes.root}>{createFirstSliders}</div>
       {headingButtonDivider(lang[location].heading1)}
       <div className={classes.root}>{createSecondSliders}</div>
+      <div className={classes.result}>
+        <Button
+          onClick={() => {
+            const top = Math.max(
+              document.body.scrollTop,
+              document.documentElement.scrollTop
+            );
+            if (top > 0) {
+              window.scrollBy(0, -10000);
+            }
+          }}
+          variant='contained'
+          color='secondary'
+        >
+          Результат
+        </Button>
+      </div>
+
       {headingButtonDivider(lang[location].heading2)}
       <div className={classes.root}>
         <About />

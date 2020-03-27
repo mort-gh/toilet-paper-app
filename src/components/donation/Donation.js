@@ -29,7 +29,7 @@ export const Donation = () => {
     <>
       <Typography style={styles.text}>{lang[location].donation1}</Typography>
 
-      <br />
+      {/* <br />
       <Typography style={styles.form}>
         <a
           href='https://www.liqpay.ua/ru/checkout/card/gnatyukr'
@@ -41,7 +41,7 @@ export const Donation = () => {
         </a>
       </Typography>
       <br />
-      <Typography style={styles.text}>{lang[location].donation2}</Typography>
+      <Typography style={styles.text}>{lang[location].donation2}</Typography> */}
     </>
   );
 };

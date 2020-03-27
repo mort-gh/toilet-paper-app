@@ -24,7 +24,7 @@ export const Ps = () => {
       <br />
       <Typography>{lang[location].ps3}</Typography>
       <br />
-      <Typography>
+      <Typography style={{ display: 'flex', flexWrap: 'wrap' }}>
         <Link color='secondary' href='https://www.facebook.com/gnatyuk.roman'>
           Facebook
         </Link>

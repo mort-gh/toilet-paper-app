@@ -11,6 +11,11 @@ export const useStyles = makeStyles({
   buttonBlock: {
     display: 'flex',
     justifyContent: 'center'
+  },
+  result: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: 80
   }
 });
 
