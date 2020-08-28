@@ -1,25 +1,25 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import { checkUserBrowserLanguage } from '../../utils';
 import lang from '../../lang/lang';
 
 const buttonDonation = require('../../images/donation_button.png');
 
 const styles = {
   text: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
   form: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   button: {
     backgroundImage: `url(${buttonDonation})`,
     border: 'none',
     width: 100,
     height: 100,
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 };
 
 export const Donation = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import { checkUserBrowserLanguage } from '../../utils';
 import lang from '../../lang/lang';
 
 export const Ps = () => {

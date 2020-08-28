@@ -1,5 +1,5 @@
 import React from 'react';
-import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import { checkUserBrowserLanguage } from '../../utils';
 import lang from '../../lang/lang';
 import {
   FacebookShareButton,
@@ -7,7 +7,7 @@ import {
   TelegramShareButton,
   TwitterShareButton,
   ViberShareButton,
-  WhatsappShareButton
+  WhatsappShareButton,
 } from 'react-share';
 import {
   FacebookIcon,
@@ -15,19 +15,19 @@ import {
   TelegramIcon,
   TwitterIcon,
   ViberIcon,
-  WhatsappIcon
+  WhatsappIcon,
 } from 'react-share';
 
 const BASE_URL = 'https://toiletpaper.tech/';
 
 const styles = {
   socialBlock: {
-    marginTop: 30
+    marginTop: 30,
   },
   socialIcon: {
     display: 'inline-block',
-    margin: '0 5px'
-  }
+    margin: '0 5px',
+  },
 };
 
 export const Social = () => {

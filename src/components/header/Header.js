@@ -1,10 +1,10 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import { getNumEnding } from '../../changeDaysName';
+import { getNumEnding } from '../../utils';
 import Container from '@material-ui/core/Container';
 import { Social } from '../social/Social';
 import { styles } from './Header.module';
-import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import { checkUserBrowserLanguage } from '../../utils';
 import lang from '../../lang/lang';
 
 export const Header = ({ result, percent }) => {
@@ -32,7 +32,7 @@ export const Header = ({ result, percent }) => {
           {getNumEnding(result, [
             lang[location].day1,
             lang[location].day2,
-            lang[location].day3
+            lang[location].day3,
           ])}
         </Typography>
         <Typography style={styles.title} variant='h6' gutterBottom>

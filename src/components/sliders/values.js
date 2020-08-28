@@ -1,4 +1,4 @@
-import { checkUserBrowserLanguage } from '../../checkUserLanguage';
+import { checkUserBrowserLanguage } from '../../utils';
 import lang from '../../lang/lang';
 import { defaultValues } from './defaultValues';
 
@@ -16,7 +16,7 @@ export const firstValues = (
     100,
     defaultValues.quantityRolls,
     quantityRolls,
-    setQuantityRolls
+    setQuantityRolls,
   ],
   quantityToilets: [
     lang[location].sliders2,
@@ -24,8 +24,8 @@ export const firstValues = (
     20,
     defaultValues.quantityToilets,
     quantityToilets,
-    setQuantityToilets
-  ]
+    setQuantityToilets,
+  ],
 });
 
 export const secondValues = (
@@ -46,7 +46,7 @@ export const secondValues = (
     15,
     defaultValues.averageWipes,
     averageWipes,
-    setAverageWipes
+    setAverageWipes,
   ],
   sheetsWipe: [
     lang[location].sliders4,
@@ -54,7 +54,7 @@ export const secondValues = (
     10,
     defaultValues.sheetsWipe,
     sheetsWipe,
-    setSheetsWipe
+    setSheetsWipe,
   ],
   sheetsRoll: [
     lang[location].sliders5,
@@ -62,7 +62,7 @@ export const secondValues = (
     500,
     defaultValues.sheetsRoll,
     sheetsRoll,
-    setSheetsRoll
+    setSheetsRoll,
   ],
   peopleHome: [
     lang[location].sliders6,
@@ -70,7 +70,7 @@ export const secondValues = (
     10,
     defaultValues.peopleHome,
     peopleHome,
-    setPeopleHome
+    setPeopleHome,
   ],
   daysQuarantine: [
     lang[location].sliders7,
@@ -78,6 +78,6 @@ export const secondValues = (
     90,
     defaultValues.daysQuarantine,
     daysQuarantine,
-    setDaysQuarantine
-  ]
+    setDaysQuarantine,
+  ],
 });

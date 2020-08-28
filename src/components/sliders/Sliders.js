@@ -7,9 +7,9 @@ import { Donation } from '../donation/Donation';
 import { Moz } from '../moz/Moz';
 import { Ps } from '../ps/Ps';
 
-import { getNumEnding } from '../../changeDaysName';
+import { getNumEnding } from '../../utils';
+import { checkUserBrowserLanguage } from '../../utils';
 import { firstValues, secondValues } from './values';
-import { checkUserBrowserLanguage } from '../../checkUserLanguage';
 import lang from '../../lang/lang';
 import shortId from 'shortid';
 
@@ -51,7 +51,7 @@ export const Sliders = () => {
     peopleHome,
     daysQuarantine,
     result,
-    getTotalResult
+    getTotalResult,
   ]);
 
   async function getTotalResult(a, b, c, d, e, f) {
@@ -69,7 +69,7 @@ export const Sliders = () => {
       getNumEnding(result, [
         lang[location].day1,
         lang[location].day2,
-        lang[location].day3
+        lang[location].day3,
       ]) +
       lang[location].header5;
 
@@ -93,7 +93,7 @@ export const Sliders = () => {
 
         <PrettoSlider
           defaultValue={defValue}
-          getAriaValueText={valuetext => stateFn(valuetext)}
+          getAriaValueText={(valuetext) => stateFn(valuetext)}
           aria-labelledby='discrete-slider'
           aria-label='pretto slider'
           valueLabelDisplay='auto'
@@ -128,7 +128,7 @@ export const Sliders = () => {
 
   const createFirstSliders = [
     newSliderTemplate(...firstBlock.quantityRolls),
-    newSliderTemplate(...firstBlock.quantityToilets)
+    newSliderTemplate(...firstBlock.quantityToilets),
   ];
 
   const createSecondSliders = [
@@ -136,10 +136,10 @@ export const Sliders = () => {
     newSliderTemplate(...secondBlock.sheetsWipe),
     newSliderTemplate(...secondBlock.sheetsRoll),
     newSliderTemplate(...secondBlock.peopleHome),
-    newSliderTemplate(...secondBlock.daysQuarantine)
+    newSliderTemplate(...secondBlock.daysQuarantine),
   ];
 
-  const headingButtonDivider = text => (
+  const headingButtonDivider = (text) => (
     <>
       <div className={classes.buttonBlock}>
         <Button color='secondary'>{text}</Button>
